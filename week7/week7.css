@@ -1,0 +1,71 @@
+#id_value {
+  width: 500px;
+  height: 60px;
+}
+
+#pw_value {
+  width: 500px;
+  height: 60px;
+}
+
+#long_btton {
+  width: 500px;
+  height: 60px;
+  background-color: #03c75a;
+  font-size: 22px;
+  color: white;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user_td {
+  width: 250px;
+  height: 50px;
+  border: white;
+}
+/* 회원 가입 */
+
+.user_inpout {
+  width: 500px;
+  height: 50;
+}
+#join {
+  width: 100px;
+  height: 30px;
+  border: white;
+}
+#cancel {
+  width: 100px;
+  height: 30px;
+  border: white;
+}
+#join_div {
+  width: 220px;
+  position: relative;
+  left: 250px;
+}
+/* main page */
+.main_logButton {
+  width: 500px;
+  height: 60px;
+  background-color: #03c75a;
+  font-size: 22px;
+  color: white;
+  display: block;
+  border: white;
+}
+.main_div {
+  width: 700px;
+  height: 200px;
+}
+.logout_botton {
+  width: 500px;
+  height: 60px;
+  font-size: 22px;
+  color: black;
+  font-weight: 600;
+  background-color: rgb(235, 233, 233);
+  border: white;
+}

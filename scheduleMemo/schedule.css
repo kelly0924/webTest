@@ -1,0 +1,95 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#log_id {
+  width: 250px;
+  height: 40px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+#log_pw {
+  width: 250px;
+  height: 40px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+#long_btton {
+  width: 250px;
+  height: 40px;
+}
+#log_check {
+  display: flex;
+  width: 250px;
+  height: 70px;
+  position: relative;
+  top: 20px;
+}
+#id_icon {
+  position: relative;
+  right: 5px;
+  top: 5px;
+}
+#pw_icon {
+  position: relative;
+  right: 5px;
+  top: 5px;
+}
+.user_input {
+  width: 210px;
+  height: 40px;
+  border: white;
+}
+.login_icons {
+  width: 24px;
+  height: 24px;
+}
+#long_check_text {
+  position: relative;
+  top: 5px;
+  color: black;
+}
+#join_link {
+  width: 100px;
+  height: 30px;
+  position: relative;
+  left: 180px;
+  top: 10px;
+}
+/* 회원 가입 */
+.join_input {
+  width: 250px;
+  height: 40px;
+}
+#join {
+  width: 100px;
+  height: 35px;
+}
+#cancel {
+  width: 100px;
+  height: 35px;
+}
+
+#form_div {
+  background-color: rgb(201, 200, 200);
+  width: 500px;
+  height: 400px;
+}
+#div_table {
+  width: 400px;
+  height: 150px;
+  position: relative;
+  top: 100px;
+  left: 50px;
+}
+
+#join_div {
+  position: relative;
+  top: 130px;
+  left: 190px;
+}

@@ -1,0 +1,143 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="styleSheet" type="text/css" href="drag.css">
+    <title>game</title>
+</head>
+<body>
+    <div id="div">
+        <div draggable="true" ondragstart="drag(0)" ondragover="over()" ondrop="drop(0)" class="div_num">1</div>
+        <div draggable="true" ondragstart="drag(1)" ondragover="over()" ondrop="drop(1)" class="div_num">2</div>
+        <div draggable="true" ondragstart="drag(2)" ondragover="over()" ondrop="drop(2)" class="div_num">3</div>
+        <div draggable="true" ondragstart="drag(3)" ondragover="over()" ondrop="drop(3)" class="div_num">4</div>
+        <div draggable="true" ondragstart="drag(4)" ondragover="over()" ondrop="drop(4)" class="div_num">5</div>
+        <div draggable="true" ondragstart="drag(5)" ondragover="over()" ondrop="drop(5)" class="div_num">6</div>
+        <div draggable="true" ondragstart="drag(6)" ondragover="over()" ondrop="drop(6)" class="div_num">7</div>
+        <div draggable="true" ondragstart="drag(7)" ondragover="over()" ondrop="drop(7)" class="div_num">8</div>
+        <div draggable="true" ondragstart="drag(8)" ondragover="over()" ondrop="drop(8)" class="div_num">9</div>
+        <div draggable="true" ondragstart="drag(9)" ondragover="over()" ondrop="drop(9)" class="div_num">10</div>
+        <div draggable="true" ondragstart="drag(10)" ondragover="over()" ondrop="drop(10)" class="div_num">11</div>
+        <div draggable="true" ondragstart="drag(11)" ondragover="over()" ondrop="drop(11)" class="div_num">12</div>
+    </div>
+
+    <div id="div_scor">
+         <div id="scor"></div>
+         <div id="timer"></div>
+    </div>
+    
+    <div id="button_div">
+         <input class="button" type="button" value="start" onclick="gameStart()">
+         <input class="button"type="button" value="check" onclick="checking()">
+    </div>
+
+    <script>
+        var currentNum=null;
+        var currentColor=null;
+        var dragIndex;
+        var dropIndex;
+        var numArray=[1,2,3,4,5,6,7,8,9,10,11,12];
+        var rnArray=[2,4,6,8,1,3,5,7,9,12,11,10];//랜덥 숫자를 생성해서 그 랜덤으로 생성된 숫자를 저장 하는 배열을 만들 것이다. 
+        var timer;
+        
+        function drag(index){
+            temDiv=document.getElementsByClassName("div_num")[index];
+            currentNum=temDiv.innerHTML;
+            dragIndex=index;//드래그 되는 인덱스 기억 하기 
+            currentColor=window.getComputedStyle(temDiv).backgroundColor;
+        }
+
+        function over(){
+            event.preventDefault();
+        }
+
+        function drop(index){
+            dropTemp=document.getElementsByClassName("div_num")[index];
+            dropIndex=index;//드랍 되는 인덱스 값을 기억 하기
+            if(dropIndex-4 == dragIndex){//???
+                document.getElementsByClassName("div_num")[dragIndex].innerHTML=currentNum;//원래 그대로돌아가기
+                dropTemp.innerHTML=dropTemp.innerHTML;
+
+            }else{
+                document.getElementsByClassName("div_num")[dragIndex].innerHTML=dropTemp.innerHTML;
+                dropTemp.innerHTML=currentNum;
+                document.getElementsByClassName("div_num")[dragIndex].style.backgroundColor=dropTemp.style.backgroundColor;
+                dropTemp.style.backgroundColor=currentColor;
+            }
+        }
+
+        function gameStart(){// 숫자를 랜덤으로 섞기 
+            for(var i=0; i<12; i++){// 현재 보이는 숫자를 살아 지게 한다. 
+                var temp=document.getElementsByClassName("div_num")[i];
+                temp.innerHTML=rnArray[i];
+            }
+            var clickedTime=new Date().getTime();//객체 사용 new 로 사용 파란 색 객체-> 함수들을 묶은 것이다. 
+                timer=setInterval(function(){//함수 역활은 일정 시간 마다 반복 해준다. 100ms=1s 매개 변수가 2개 첫 함수, 시간
+                var nowTime=new Date().getTime();
+                var duration=new Date(nowTime - clickedTime);
+                
+                var min=duration.getMinutes();
+                var sec=duration.getSeconds();
+                var millesc=duration.getMilliseconds();
+
+                document.getElementById("timer").innerHTML=min+ ":" + sec + ":" +millesc;
+
+            },1);
+
+           
+            for(var i=0; i<12; i++){
+                var colorCode="#"+Math.round(Math.random()*0xffffff).toString(16);//math.round 소수점을 반올림 하겠다. toString(16)->숫자를 문자로 변환하는 함수
+                document.getElementsByClassName("div_num")[i].style.backgroundColor=colorCode;
+                
+            }
+            /*while(true){//rnArray가 11즉 다 찰때 까지 반복 할 것이다. 
+                var rn=Math.floor(Math.random()*12+1);//1~12까지 랜덤 숫자를 생성해서 넣은 변수 
+                if(rnArray.length==11){
+                    break;
+                }else{
+                    if(rnArray.length==0){
+                    rnArray[0]=rn;
+                    i++;
+                    }else{
+                        for(var j=0; j<=i; j++){
+                            if(rnArray[j]==rn){
+                                break;
+                            }else{
+                                rnArray[i]=rn;
+                                i++;
+                            }
+                        }
+                    }
+
+                } 
+            }
+            for(var i=0; i<rnArray.length; i++){
+                temDiv=document.getElementsByClassName("div_num")[i];
+                console.log(temDiv);
+            }
+            */
+        }
+        function checking(){
+               var checkCnt=false;
+               tempDiv=document.getElementsByClassName("div_num");//현재 div를 출력 
+               for(var i=0; i<12; i++){ 
+                   if(tempDiv[i].innerHTML != numArray[i]){
+                        checkCnt=false;
+                        document.getElementById("scor").innerHTML="try again";
+                        break;
+                    }else{
+                        checkCnt=true;
+                    }
+                }
+                if(checkCnt==true){
+                    document.getElementById("scor").innerHTML="you win";
+                }
+                
+                clearInterval(timer);//timer을 정지 시킨다. 
+                
+        }
+
+    </script>
+</body>
+</html>

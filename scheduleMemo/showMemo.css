@@ -1,0 +1,27 @@
+/* header css */
+#header {
+  height: 70px;
+  background-color: gray;
+}
+.header_div {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+}
+.header_icons {
+  width: 24px;
+  height: 24px;
+  color: gray;
+}
+
+/* nav css */
+#main_nav {
+  width: 150px;
+  background-color: rgb(112, 95, 95);
+}
+
+/* main css */
+#main {
+  display: flex;
+  height: 100%;
+}
