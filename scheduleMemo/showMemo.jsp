@@ -116,6 +116,7 @@
                 result.appendChild(newDiv);
 
                 //main_div 인 곳에다 생성
+                //삭제 하는 버튼 
                 var deletButton=document.createElement("input");
                 deletButton.type="button";
                 deletButton.value="delet";
@@ -138,17 +139,30 @@
                 
                 // deletButton.attachEvent("onclick",function(){deleFun("deleFun");});
                 newDiv.appendChild(deletButton);
+
+                //수정하는 버튼 
+                var modifyButton=document.createElement("input");
+                modifyButton.type="button";
+                modifyButton.value="modify";
+                modifyButton.className="modify_button";
+
+                modifyButton.addEventListener('click', function(){
+                     modifyFun(tmp[0],tmp[2])
+                });
+                
+                // deletButton.attachEvent("onclick",function(){deleFun("deleFun");});
+                newDiv.appendChild(modifyButton);
             }
 
 
             
         }
 
-        function logoutFun(){
+        function deleFun(){
             location.href="logout.jsp";
         }
 
-        function deleFun(temp){
+        function sendNumFun(temp){
             console.log(temp);
             
             // var temp=document.getElementById("main_div_div").value;//값을 넘겨 받고 
@@ -163,6 +177,32 @@
             newInput.name="memo_num";
             newInput.value=temp;
             newForm.appendChild(newInput);    
+            document.getElementById("main_div").appendChild(newForm);
+            newForm.submit();  
+              // document.getElementById("fromName").submit();//fromName 이라는 form으로 값을 넘기겠다.
+        }
+        function modifyFun(temp, temp_date){
+            console.log(temp,temp_date);
+            
+            // var temp=document.getElementById("main_div_div").value;//값을 넘겨 받고 
+
+            var newForm=document.createElement("form");
+            newForm.name="newForm";
+            newForm.action="memoModifyPage.jsp";
+            newForm.method="post";
+            // 메모의 count 값을 넘겨 주기 위해 생선 된 Input tag
+            var newInput=document.createElement("input");
+            newInput.type="hidden";
+            newInput.name="memo_num";
+            newInput.value=temp;
+            newForm.appendChild(newInput);
+            //메모의 날짜의 값을 넘겨 주기 위해 생성된 input tage 이다. 
+            var newInput2=document.createElement("input");
+            newInput2.type="hidden";
+            newInput2.name="memo_date";
+            newInput2.value=temp_date;
+            newForm.appendChild(newInput2);
+
             document.getElementById("main_div").appendChild(newForm);
             newForm.submit();  
               // document.getElementById("fromName").submit();//fromName 이라는 form으로 값을 넘기겠다.

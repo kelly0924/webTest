@@ -9,7 +9,6 @@
     request.setCharacterEncoding("utf-8");
     //String temp=request.getParameterValues("main_input")[0];
     String temp=request.getParameter("memo_num");
-    String temptest=request.getParameter("test"); 
     int deleNum=Integer.parseInt(temp);
     //디비에 추가 저장 하기 -- >로그인 된 사용자에게  메모를 저장 한다. 날짜, 메모 텍스트 
         //db를 연결 하고  데이터 베이스에 있는 것을 가져와서 출력 해줄 것이다. 

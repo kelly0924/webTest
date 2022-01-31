@@ -5,8 +5,9 @@
 <%@ page import="java.sql.ResultSet"%>
 
 <%
-
-   String userSelectDate=request.getParameter("user_select_date");
+   request.setCharacterEncoding("utf-8");
+   String temp=request.getParameter("memo_num");
+   String userSelectDate=request.getParameter("memo_date");
    String userSelectTime=request.getParameter("user_select_time");
    String id="";
 
@@ -20,10 +21,10 @@
 		    }
     }
 
-   //db를 연결 하고  데이터 베이스에 있는 것을 가져와서 출력 해줄 것이다. 
-   Class.forName("com.mysql.jdbc.Driver");//com,mysql.jdbc.Driver을 사용 할것 이다. 
+    //db를 연결 하고  데이터 베이스에 있는 것을 가져와서 출력 해줄 것이다. 
+    Class.forName("com.mysql.jdbc.Driver");//com,mysql.jdbc.Driver을 사용 할것 이다. 
     //사용할 데이터 베이스를 연결 해주기 
-     Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/scheduleDB","schedule","1234");
+    Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/scheduleDB","schedule","1234");
 
     String sql= "SELECT * FROM memolist ";
     PreparedStatement query=connect.prepareStatement(sql);//연결한 데이터 베이스에다 sql을 보낸다.
