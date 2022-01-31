@@ -147,7 +147,7 @@
                 modifyButton.className="modify_button";
 
                 modifyButton.addEventListener('click', function(){
-                     modifyFun(tmp[0],tmp[2])
+                     modifyFun(tmp[0],tmp[2],tmp[1])
                 });
                 
                 // deletButton.attachEvent("onclick",function(){deleFun("deleFun");});
@@ -181,7 +181,7 @@
             newForm.submit();  
               // document.getElementById("fromName").submit();//fromName 이라는 form으로 값을 넘기겠다.
         }
-        function modifyFun(temp, temp_date){
+        function modifyFun(temp, temp_date,temp_memo){
             console.log(temp,temp_date);
             
             // var temp=document.getElementById("main_div_div").value;//값을 넘겨 받고 
@@ -202,6 +202,12 @@
             newInput2.name="memo_date";
             newInput2.value=temp_date;
             newForm.appendChild(newInput2);
+            //메모의 내용의 값을 넘겨 줄 input 태그 생성 
+            var newInput3=document.createElement("input");
+            newInput3.type="hidden";
+            newInput3.name="memo_memo";
+            newInput3.value=temp_memo;
+            newForm.appendChild(newInput3);
 
             document.getElementById("main_div").appendChild(newForm);
             newForm.submit();  

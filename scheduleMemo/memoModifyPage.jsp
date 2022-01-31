@@ -6,9 +6,10 @@
 
 <%
    request.setCharacterEncoding("utf-8");
-   String temp=request.getParameter("memo_num");
-   String userSelectDate=request.getParameter("memo_date");
+   String memoNum=request.getParameter("memo_num");
+   String userDate=request.getParameter("memo_date");
    String userSelectTime=request.getParameter("user_select_time");
+   String userMemo=request.getParameter("memo_memo");
    String id="";
 
     Cookie[] ck=request.getCookies();//서버에서 보낸 쿠기를 배열로 받아 옴  
@@ -59,13 +60,14 @@
         <div id="main_center_div">
            <%-- 동적으로 추가 해주기 --%>
 
-            <form action="memoAddDB.jsp" method="post">
-                <input name="writeDate" value="<%=userSelectDate%>">
+            <form action="memoModify.jsp" method="post">
+                <input name="writeDate" value="<%=userDate%>">
                 <input name="user_id" value= "<%=id%>"> <!-- 이 값은 스타일로 안보이게 할것이다. -->
                 <%-- <img src="img/memoadd.png" onclick="addMemo()"> --%>
                 <hr>
                     <div id="main_from_div">
-                        <input type="text" id="new_input" name="newMemoInput">
+                        <input type="text" id="new_input" name="modifyMemoInput" value="<%=userMemo%>">
+                        <input type="hidden" name="memo_num" value="<%=memoNum%>">
                         <input type="image" src="img/save.png"><!--image 타입은 submit 과 같이 이미지를 눌렀을때 서버에 내용을 보내준다. -->
                     </div>
                     <%-- <input type="submit" value=""> --%>
