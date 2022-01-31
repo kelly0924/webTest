@@ -154,7 +154,7 @@
             // var temp=document.getElementById("main_div_div").value;//값을 넘겨 받고 
 
             var newForm=document.createElement("form");
-            newForm.id="fromName";
+            newForm.name="newForm";
             newForm.action="memoDelet.jsp";
             newForm.method="post";
 
@@ -162,10 +162,10 @@
             newInput.type="hidden";
             newInput.name="memo_num";
             newInput.value=temp;
-        
-
-
-           // document.getElementById("fromName").submit();//fromName 이라는 form으로 값을 넘기겠다.
+            newForm.appendChild(newInput);    
+            document.getElementById("main_div").appendChild(newForm);
+            newForm.submit();  
+              // document.getElementById("fromName").submit();//fromName 이라는 form으로 값을 넘기겠다.
         }
 
     </script>
