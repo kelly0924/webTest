@@ -33,8 +33,7 @@
 </head>
 <body>
     <script>
-        console.log("<%=temptest%>");
-        console.log("<%=temp%>")
+
     </script>
 </body>
 </html>

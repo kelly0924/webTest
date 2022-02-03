@@ -158,11 +158,11 @@
             
         }
 
-        function deleFun(){
+        function logoutFun(){
             location.href="logout.jsp";
         }
 
-        function sendNumFun(temp){
+        function deleFun(temp){
             console.log(temp);
             
             // var temp=document.getElementById("main_div_div").value;//값을 넘겨 받고 
